@@ -37,10 +37,10 @@ export class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    prevState !== this.state &&
+    prevState.contacts !== this.state.contacts &&
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.contacts));
-    const savedContacts = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    savedContacts.length === 0 && localStorage.removeItem(STORAGE_KEY);
+    JSON.parse(localStorage.getItem(STORAGE_KEY)).length === 0 &&
+      localStorage.removeItem(STORAGE_KEY);
   }
 
   updateFilter = filterName => {
